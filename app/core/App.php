@@ -15,7 +15,6 @@ class App
 
         //Check if controller exist and set it 
         $controllerURL  =   '../app/controllers/'.$url[0].$this->controllerExt.'.php';
-        $controllerDefaultURL   =   '../app/controllers/'.$this->controller.'.php';
         if( file_exists($controllerURL) )
         {
             $this->controller   =   $url[0].$this->controllerExt;
@@ -23,7 +22,9 @@ class App
         }
 
         //Require and Set the Controller
+        $controllerDefaultURL   =   '../app/controllers/'.$this->controller.'.php';
         require_once $controllerDefaultURL;
+        
         $this->controllerClass  =    new $this->controller;
 
         if(isset($url[1]))
